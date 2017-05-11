@@ -1,3 +1,4 @@
+<simple-notifications [options]="options"></simple-notifications>
 <h1>
   {{'angularAlert.title' | translate}}
 </h1>
@@ -5,11 +6,22 @@
 {{'angularAlert.welcome' | translate}}
 
 <br><br>
+<div [innerHTML]="title"></div>
+{{title}}
+<br><br>
+{{key | translate}}
+<br><br>
 <label>
-  <select #langSelect (change)="translate.use(langSelect.value)">
-    <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
+  <select #langSelect (change)="translateService.use(langSelect.value)">
+    <option *ngFor="let lang of translateService.getLangs()" [value]="lang" [selected]="lang === translateService.currentLang">{{ lang }}</option>
   </select>
 </label>
 
 <br><br>
-<button (click)="handleClickAlertSuccess()">Alert success</button>
+<button (click)="handleClickAlertSuccessNominal()">Alert success nominal (NORMAL)</button>
+
+<button (click)="handleClickAlertSuccessTranslate()">Alert success translate (TRANSLATE)</button>
+
+<button (click)="handleClickAlertHtmlTranslate()">Alert html translate (TRANSLATE)</button>
+
+<button (click)="handleClickAlertBareTranslate()">Alert bare translate (TRANSLATE)</button>
