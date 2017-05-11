@@ -20,4 +20,8 @@ export class AppComponent {
         let browserLang = translate.getBrowserLang();
         translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');
   }
+
+  handleClickAlertSuccess() {
+    console.log("handleClickAlertSuccess");
+  }
 }
